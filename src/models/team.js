@@ -16,8 +16,8 @@ module.exports = (sequelize, DataTypes) => {
   Team.init({
     name: DataTypes.STRING,
     description: DataTypes.TEXT,
-    // isActive: DataTypes.STRING,
-    isActive: DataTypes.BOOLEAN,
+    isActive: DataTypes.STRING,
+    // isActive: DataTypes.BOOLEAN,
     deleteAt: DataTypes.STRING,
   }, {
     sequelize,

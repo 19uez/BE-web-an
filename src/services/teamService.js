@@ -110,8 +110,6 @@ let updateTeamData = (data) => {
             let team = await db.Team.findOne({
                 where: { id: data.id },
                 raw: false
-
-
             })
             if (team) {
                 team.name = data.name;

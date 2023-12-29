@@ -6,21 +6,29 @@ let handleGetAllTeams = async (req, res) => {
     return res.status(200).json({
       errCode: 1,
       errMessage: 'Missing requires parameters',
-      users: []
+      teams: []
     })
   }
-  let users = await teamService.getAllTeam(id);
-  console.log(users)
+  let teams = await teamService.getAllTeam(id);
+  // console.log(teams)
   return res.status(200).json({
     errCode: 0,
     errMessage: 'get team success',
-    users
+    teams
   })
 }
 let handleCreateNewTeam = async (req, res) => {
-  let message = await teamService.createNewTeam(req.body);
-  console.log(message);
-  return res.status(200).json(message);
+  try {
+    let message = await teamService.createNewTeam(req.body);
+    console.log(message);
+    return res.status(200).json(message);
+  } catch (e) {
+    console.log(e)
+    return res.status(200).json({
+      errCode: -1,
+      errMessage: 'Error from server'
+    })
+  }
 }
 let handleDeleteTeam = async (req, res) => {
   if (!req.body.id) {
